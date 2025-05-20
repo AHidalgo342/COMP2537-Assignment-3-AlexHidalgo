@@ -202,15 +202,11 @@ $(async function () {
 
 	// There's a better way to do this
 	$(".reset").on(("click"), async function () {
-		gameRunning = false;
-		win = false;
 		await loadPokemon(difficulty);
 		setup(difficulty);
 	});
 
 	$(".start").on(("click"), async function () {
-		gameRunning = false;
-		win = false;
 		await loadPokemon(difficulty);
 		setup(difficulty);
 
