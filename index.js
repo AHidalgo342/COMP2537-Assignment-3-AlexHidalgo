@@ -77,7 +77,7 @@ function setup(difficulty) {
 	let matches = 0;
 	let total = difficulty;
 
-	switch(difficulty) {
+	switch (difficulty) {
 		case 3: {
 			timer = 10;
 			break;
@@ -202,11 +202,19 @@ $(async function () {
 
 	// There's a better way to do this
 	$(".reset").on(("click"), async function () {
+		$(".clicks").html(`Clicks: 0`);
+		$(".pairs").html(`Pairs: 0/0`);
+		$(".timer").html(`Timer: 0`);
+		
 		await loadPokemon(difficulty);
 		setup(difficulty);
 	});
 
 	$(".start").on(("click"), async function () {
+		$(".clicks").html(`Clicks: 0`);
+		$(".pairs").html(`Pairs: 0/0`);
+		$(".timer").html(`Timer: 0`);
+
 		await loadPokemon(difficulty);
 		setup(difficulty);
 
