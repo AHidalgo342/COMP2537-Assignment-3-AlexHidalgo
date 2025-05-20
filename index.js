@@ -94,6 +94,8 @@ function setup(difficulty) {
 
 	gameRunning = true;
 	win == false;
+	
+	clearInterval(gameTimer);
 
 	let gameTimer = setInterval(() => {
 
@@ -205,7 +207,7 @@ $(async function () {
 		$(".clicks").html(`Clicks: 0`);
 		$(".pairs").html(`Pairs: 0/0`);
 		$(".timer").html(`Timer: 0`);
-		
+
 		await loadPokemon(difficulty);
 		setup(difficulty);
 	});
