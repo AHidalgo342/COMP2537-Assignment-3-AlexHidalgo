@@ -60,7 +60,7 @@ function powerup() {
 	if (powerupTimer == undefined) {
 		powerupTimer = setTimeout(2000);
 	} else if (powerupTimer != undefined) {
-		timer -= 2;
+		timer += 2;
 		$(".match_status").html("Quick Match!!");
 
 		setTimeout(() => {
@@ -76,9 +76,36 @@ function setup(difficulty) {
 	let clicks = 0;
 	let matches = 0;
 	let total = difficulty;
-	timer = 0;
+
+	switch(difficulty) {
+		case 3: {
+			timer = 10;
+			break;
+		}
+		case 6: {
+			timer = 20;
+			break;
+		}
+		case 12: {
+			timer = 40;
+			break;
+		}
+	}
 
 	gameRunning = true;
+	win == false;
+
+	let gameTimer = setInterval(() => {
+
+		if (timer == 0 || win == true) {
+			console.log('Done counter');
+			clearInterval(gameTimer);
+			win = false;
+			$(".card").off("click");
+			$(".game_status").html("Game Over!");
+		}
+		$(".timer").html(`Timer: ${timer--}`);
+	}, 1000);
 
 	$(".card").on(("click"), async function () {
 		$(".clicks").html(`Clicks: ${++clicks}`);
@@ -143,21 +170,7 @@ function setup(difficulty) {
 		if (matches == total) {
 			win = true;
 		}
-
-		if (win == true) {
-			gameRunning = false;
-			$(".game_status").html("You Winner!");
-		}
 	});
-
-	let gameTimer = setInterval(() => {
-
-		if (gameRunning == false) {
-			console.log('Done counter');
-			clearInterval(gameTimer);
-		}
-		$(".timer").html(`Timer: ${++timer}`);
-	}, 1000);
 }
 
 
