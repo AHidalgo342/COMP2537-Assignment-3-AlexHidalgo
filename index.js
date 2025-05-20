@@ -77,6 +77,8 @@ function setup(difficulty) {
 	let matches = 0;
 	let total = difficulty;
 
+	var gameTimer = undefined;
+
 	switch (difficulty) {
 		case 3: {
 			timer = 10;
@@ -95,8 +97,7 @@ function setup(difficulty) {
 	gameRunning = true;
 	win == false;
 	
-	let gameTimer = setInterval(() => {
-
+	gameTimer = setInterval(() => {
 		if (timer == 0 || win == true) {
 			console.log('Done counter');
 			clearInterval(gameTimer);
