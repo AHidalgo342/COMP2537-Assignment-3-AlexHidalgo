@@ -95,8 +95,6 @@ function setup(difficulty) {
 	gameRunning = true;
 	win == false;
 	
-	clearInterval(gameTimer);
-
 	let gameTimer = setInterval(() => {
 
 		if (timer == 0 || win == true) {
@@ -104,7 +102,12 @@ function setup(difficulty) {
 			clearInterval(gameTimer);
 			win = false;
 			$(".card").off("click");
-			$(".game_status").html("Game Over!");
+			
+			if(win == false) {
+				$(".game_status").html("Game Over!");
+			} else {
+				$(".game_status").html("You Win!");
+			}
 		}
 		$(".timer").html(`Timer: ${timer--}`);
 	}, 1000);
@@ -171,6 +174,7 @@ function setup(difficulty) {
 
 		if (matches == total) {
 			win = true;
+			gameRunning == false;
 		}
 	});
 }
