@@ -61,9 +61,11 @@ function powerup() {
 		powerupTimer = setTimeout(2000);
 	} else if (powerupTimer != undefined) {
 		timer -= 2;
-		// Do some sort of flash here
-		console.log("wagoo");
+		$(".game_status").html("Quick Match!!");
 
+		setTimeout(() => {
+			$(".game_status").html("");
+		}, 1000);
 	}
 }
 
