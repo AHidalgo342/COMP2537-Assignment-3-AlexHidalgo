@@ -61,10 +61,10 @@ function powerup() {
 		powerupTimer = setTimeout(2000);
 	} else if (powerupTimer != undefined) {
 		timer -= 2;
-		$(".game_status").html("Quick Match!!");
+		$(".match_status").html("Quick Match!!");
 
 		setTimeout(() => {
-			$(".game_status").html("");
+			$(".match_status").html("");
 		}, 1000);
 	}
 }
